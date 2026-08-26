@@ -1,0 +1,37 @@
+==================================================
+          TITANIC DATA QUALITY REPORT            
+==================================================
+Total Passengers (Rows)   : 891
+Total Attributes (Columns): 12
+Target Feature            : Survived
+
+--- Column Data Types ---
+  - PassengerId    : int64
+  - Survived       : int64
+  - Pclass         : int64
+  - Name           : object
+  - Sex            : object
+  - Age            : float64
+  - SibSp          : int64
+  - Parch          : int64
+  - Ticket         : object
+  - Fare           : float64
+  - Cabin          : object
+  - Embarked       : object
+
+--- Feature Classification ---
+Numerical Features (7): PassengerId, Survived, Pclass, Age, SibSp, Parch, Fare
+Categorical Features (5): Name, Sex, Ticket, Cabin, Embarked
+
+--- Missing Values Analysis ---
+  - Age         : 177 missing (19.87%)
+  - Cabin       : 687 missing (77.10%)
+  - Embarked    :   2 missing (0.22%)
+
+--- Target Distribution (Survival Rate) ---
+  - Did Not Survive (0): 549 (61.62%)
+  - Survived (1)        : 342 (38.38%)
+
+==================================================
+               END OF REPORT                      
+==================================================
