@@ -10,24 +10,36 @@ import pandas as pd
 import numpy as np
 
 # Ensure project root is available in module path
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
+WEEK1_ROOT = Path(__file__).resolve().parent.parent
+REPO_ROOT = WEEK1_ROOT.parent
+for p in [str(WEEK1_ROOT), str(REPO_ROOT)]:
+    if p not in sys.path:
+        sys.path.insert(0, p)
 
-from src.data_loader import load_titanic_data, inspect_data
-from src.feature_engineering import engineer_features
-from src.data_cleaning import clean_missing_values
-from src.preprocessing import (
-    encode_categorical_features,
-    prepare_train_test_split,
-    scale_features,
-)
+try:
+    from week1.src.data_loader import load_titanic_data, inspect_data
+    from week1.src.feature_engineering import engineer_features
+    from week1.src.data_cleaning import clean_missing_values
+    from week1.src.preprocessing import (
+        encode_categorical_features,
+        prepare_train_test_split,
+        scale_features,
+    )
+except ImportError:
+    from src.data_loader import load_titanic_data, inspect_data
+    from src.feature_engineering import engineer_features
+    from src.data_cleaning import clean_missing_values
+    from src.preprocessing import (
+        encode_categorical_features,
+        prepare_train_test_split,
+        scale_features,
+    )
 
 
 @pytest.fixture
 def raw_data_path() -> Path:
     """Fixture returning path to raw CSV."""
-    return PROJECT_ROOT / "data" / "raw" / "train.csv"
+    return WEEK1_ROOT / "data" / "raw" / "train.csv"
 
 
 @pytest.fixture

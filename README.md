@@ -1,6 +1,6 @@
-# Titanic Survival Prediction — Data Cleaning & Preprocessing (Week 1 ML Project)
+# Skill Nexus — Online Machine Learning Internship
 
-[![Python 3.10](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat&logo=python&logoColor=white)](https://www.python.org/)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat&logo=python&logoColor=white)](https://www.python.org/)
 [![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.2+-F7931E?style=flat&logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
 [![Pandas](https://img.shields.io/badge/Pandas-2.0+-150458?style=flat&logo=pandas&logoColor=white)](https://pandas.pydata.org/)
 [![Pytest](https://img.shields.io/badge/Tested%20With-Pytest-0A9EDC?style=flat&logo=pytest&logoColor=white)](https://docs.pytest.org/)
@@ -8,254 +8,163 @@
 
 ---
 
-## 📌 Project Overview
+## 📌 Internship Overview
 
-This repository contains a professional, portfolio-grade implementation of **Week 1: Machine Learning Fundamentals & Data Preprocessing**. 
+Welcome to the **Skill Nexus Online Machine Learning Internship** portfolio repository. This repository houses all weekly assignments, mini projects, production-grade source code, diagnostic figures, serialized machine learning models, and automated test suites developed throughout the program.
 
-The goal of this project is to take the raw **Kaggle Titanic Survival Dataset** (`train.csv`), perform thorough exploratory data analysis (EDA), handle missing values intelligently, engineer high-signal domain features, encode categorical variables, scale numerical features without data leakage, and produce a fully cleaned dataset ready for predictive ML modeling.
-
----
-
-## 🎓 Machine Learning Fundamentals
-
-### What is Machine Learning?
-**Machine Learning (ML)** is a subfield of Artificial Intelligence (AI) focused on building algorithms that learn patterns from data and improve their predictive accuracy over time without being explicitly programmed with hardcoded rules.
-
----
-
-### Types of Machine Learning
+The repository is modularly organized into independent, self-contained weekly modules:
 
 ```
-                       ┌─────────────────────────┐
-                       │    Machine Learning     │
-                       └────────────┬────────────┘
-                                    │
-         ┌──────────────────────────┼──────────────────────────┐
-         ▼                          ▼                          ▼
-┌─────────────────┐        ┌─────────────────┐        ┌─────────────────┐
-│   Supervised    │        │  Unsupervised   │        │  Reinforcement  │
-│    Learning     │        │    Learning     │        │    Learning     │
-└────────┬────────┘        └────────┬────────┘        └────────┬────────┘
-         │                          │                          │
-  ┌──────┴──────┐            ┌──────┴──────┐            ┌──────┴──────┐
-  ▼             ▼            ▼             ▼            ▼             ▼
-Classification Regression Clustering Dimensionality  Agent       Environment
-(Titanic)      (Housing)  (Customers)  Reduction   (Self-Driving)  (State/Reward)
-```
-
-#### 1. Supervised Learning
-In Supervised Learning, the algorithm learns from a labeled dataset containing both input features ($X$) and ground-truth targets ($y$).
-- **Classification:** Predicts discrete categories or labels.
-  - *Example:* **Titanic Survival Prediction** — Predicting whether a passenger survived ($y=1$) or did not survive ($y=0$).
-- **Regression:** Predicts continuous numerical values.
-  - *Example:* Predicting house prices based on square footage and location.
-
-#### 2. Unsupervised Learning
-In Unsupervised Learning, the model analyzes unlabeled data ($X$) to discover hidden patterns, groupings, or structural representations without human annotations.
-- **Clustering:** Grouping similar data points together.
-  - *Example:* Customer market segmentation based on purchasing behavior.
-- **Dimensionality Reduction:** Compressing high-dimensional feature spaces while preserving essential variance.
-  - *Example:* Principal Component Analysis (PCA) or t-SNE for dataset visualization.
-
-#### 3. Reinforcement Learning (RL)
-Reinforcement Learning involves an **Agent** interacting with a dynamic **Environment**. The agent takes an **Action**, observes the updated state, and receives a **Reward** or penalty. Through trial and error, the agent learns an optimal policy to maximize cumulative rewards.
-- *Real-World Example:* Automated trading bots or self-driving cars adjusting steering angle and acceleration based on environmental sensors and collision rewards/penalties.
-
----
-
-## 🏗️ Project Architecture & Directory Structure
-
-├── week2/                           # Week 2: Supervised Learning (Regression & Classification)
-│   ├── data/                        # Kaggle Housing & Titanic datasets
-│   ├── src/                         # Linear/Logistic Regression, Trees, Ensembles, Utils
-│   ├── notebooks/                   # Supervised Learning portfolio notebook
-│   ├── outputs/                     # High-DPI figures, models (.joblib), CSV reports
-│   ├── tests/                       # Pytest automated test suite (9 tests)
-│   ├── main.py                      # Week 2 CLI pipeline entrypoint
-│   └── README.md                    # Week 2 comprehensive documentation
-│
-├── data/
-│   ├── raw/
-│   │   └── train.csv                # Raw Titanic training dataset (891 rows, 12 columns)
-│   └── processed/
-│       └── titanic_cleaned.csv      # Cleaned, engineered & ML-ready dataset
-│
-├── notebooks/
-│   └── week1_titanic_analysis.ipynb # End-to-end Jupyter Notebook portfolio walkthrough
-│
-├── src/
-│   ├── __init__.py                  # Package initializer
-│   ├── data_loader.py               # Dataset loading & automated quality reporting
-│   ├── data_cleaning.py             # Imputation strategies (Age median, Embarked mode, Cabin Deck)
-│   ├── feature_engineering.py       # Domain features (FamilySize, IsAlone, Title extraction)
-│   ├── preprocessing.py             # Scikit-Learn encoding, scaling & stratified train/test split
-│   └── visualization.py             # Plot generation & figure export module
-│
-├── outputs/
-│   ├── figures/                     # Generated high-DPI exploratory charts
-│   │   ├── age_distribution.png
-│   │   ├── survival_distribution.png
-│   │   ├── survival_by_gender.png
-│   │   ├── survival_by_class.png
-│   │   └── correlation_heatmap.png
-│   ├── reports/
-│   │   └── data_quality_report.txt  # Automated text inspection summary
-│   └── titanic_cleaned.csv          # Cleaned CSV output copy
-│
-├── tests/
-│   ├── __init__.py                  # Test package initializer
-│   └── test_preprocessing.py        # Automated Pytest suite (7 test cases)
-│
-├── main.py                          # Main Python execution pipeline script
-├── requirements.txt                 # Project dependencies
-├── README.md                        # Documentation & Learning Guide
-├── .gitignore                       # Version control exclusion rules
-└── LICENSE                          # Open-source MIT License
+Skill Nexus Online ML Internship
+├── 📂 week1/  ->  Machine Learning Fundamentals & Data Preprocessing
+└── 📂 week2/  ->  Supervised Learning (Regression & Classification)
 ```
 
 ---
 
-## 🛠️ Data Preprocessing & Engineering Workflow
+## 🗺️ Internship Curriculum & Roadmap
+
+```
+                          Skill Nexus ML Internship
+                                     │
+           ┌─────────────────────────┴─────────────────────────┐
+           ▼                                                   ▼
+┌───────────────────────────────┐               ┌───────────────────────────────┐
+│            WEEK 1             │               │            WEEK 2             │
+│   ML Fundamentals & EDA &     │               │      Supervised Learning      │
+│      Data Preprocessing       │               │  (Regression & Classification)│
+├───────────────────────────────┤               ├───────────────────────────────┤
+│ • Types of Machine Learning   │               │ • Linear Regression (OLS)     │
+│ • Data Imputation & Cleaning  │               │ • Logistic Regression         │
+│ • Domain Feature Engineering  │               │ • Decision Trees & RF         │
+│ • One-Hot & Label Encoding    │               │ • Mini Project 2: House Price │
+│ • Non-Leaking Standardization │               │ • Assignment 2: Titanic Class │
+└──────────────┬────────────────┘               └──────────────┬────────────────┘
+               ▼                                               ▼
+     [ Explore Week 1 ]                              [ Explore Week 2 ]
+     (week1/README.md)                               (week2/README.md)
+```
+
+---
+
+## 📂 Repository Architecture
 
 ```text
-Raw Dataset (train.csv)
-          │
-          ▼
-   Load & Inspect Dataset (.info, .describe)
-          │
-          ▼
-   Generate Data Quality Report
-          │
-          ▼
-   Missing Value Handling (Age Median by Title/Pclass, Embarked Mode, Cabin Deck)
-          │
-          ▼
-   Feature Engineering (Title Extraction, FamilySize, IsAlone, Cabin_Known)
-          │
-          ▼
-   Categorical Encoding (Sex → LabelEncoder, Embarked/Title/Deck → OneHotEncoder)
-          │
-          ▼
-   Stratified Train/Test Split (80% Train / 20% Test, stratify=Survived)
-          │
-          ▼
-   Feature Scaling (StandardScaler fit on Train ONLY → zero leakage)
-          │
-          ▼
-   Visual Analytics & Chart Export
-          │
-          ▼
-   Export Cleaned Dataset (titanic_cleaned.csv)
+.
+├── week1/                           # Week 1: ML Fundamentals & Data Preprocessing
+│   ├── data/
+│   │   ├── raw/train.csv            # Raw Kaggle Titanic Dataset (891 rows)
+│   │   └── processed/               # Cleaned & scaled dataset (titanic_cleaned.csv)
+│   ├── src/                         # Modular Python data preprocessing engine
+│   │   ├── data_loader.py           # Inspection & data quality reports
+│   │   ├── data_cleaning.py         # Median/Mode/Deck imputation strategies
+│   │   ├── feature_engineering.py   # FamilySize, IsAlone, and Title extraction
+│   │   ├── preprocessing.py         # Encoding, stratified split, and scaling
+│   │   └── visualization.py         # High-DPI EDA figure generator
+│   ├── notebooks/
+│   │   └── week1_titanic_analysis.ipynb # Jupyter Portfolio walkthrough
+│   ├── outputs/                     # Generated charts, quality reports & CSVs
+│   ├── tests/
+│   │   └── test_preprocessing.py    # Automated Pytest suite (7 test cases)
+│   ├── main.py                      # Week 1 CLI pipeline entrypoint
+│   └── README.md                    # Dedicated Week 1 documentation
+│
+├── week2/                           # Week 2: Supervised Learning (Regression & Classification)
+│   ├── data/
+│   │   ├── Housing.csv              # Kaggle Housing Dataset (545 rows, 13 features)
+│   │   └── titanic_cleaned.csv      # Cleaned Titanic Classification dataset
+│   ├── src/                         # Modular model training & evaluation pipelines
+│   │   ├── housing_regression.py    # Linear Regression, Decision Tree, Random Forest
+│   │   ├── titanic_classification.py# Logistic Regression, Decision Tree, Random Forest
+│   │   └── model_utils.py           # Metrics calculation, plotting & model serialization
+│   ├── notebooks/
+│   │   └── week2_supervised_learning.ipynb # Interactive portfolio notebook with math derivations
+│   ├── outputs/
+│   │   ├── figures/                 # Predicted vs Actual, Residuals, ROC curves, CM
+│   │   ├── models/                  # Serialized .joblib model artifacts & scalers
+│   │   └── reports/                 # Tabular CSV benchmark performance metrics
+│   ├── tests/
+│   │   └── test_week2_models.py     # Automated Pytest suite (9 test cases)
+│   ├── main.py                      # Week 2 CLI pipeline entrypoint
+│   └── README.md                    # Dedicated Week 2 documentation
+│
+├── requirements.txt                 # Project dependencies
+├── LICENSE                          # MIT License
+└── README.md                        # Master repository documentation
 ```
 
-### 1. Data Quality Analysis & Missing Data Strategy
-- **Row Count:** 891 passengers
-- **Column Count:** 12 attributes
-- **Missing Value Handling Strategy:**
-  - **`Age` (177 missing / 19.8%):** Instead of global mean filling, missing ages are imputed using the **median age grouped by passenger `Title` and `Pclass`**, preserving demographic nuance.
-  - **`Embarked` (2 missing / 0.22%):** Imputed with mode (`'S'`).
-  - **`Cabin` (687 missing / 77.1%):** High missingness is transformed into a high-signal binary feature `Cabin_Known` ($1$ if cabin recorded, $0$ otherwise) and `Deck` feature extracted from the cabin prefix letter (`'Unknown'` for missing). Rows are **never** blindly deleted!
+---
 
-### 2. Feature Engineering
-- **`FamilySize`:** `SibSp` + `Parch` + 1
-- **`IsAlone`:** Binary indicator ($1$ if `FamilySize` == 1 else $0$).
-- **`Title`:** Extracted from passenger names (`Mr`, `Mrs`, `Miss`, `Master`, `Rare`).
+## 📊 Summary of Projects & Benchmarks
 
-### 3. Categorical Encoding
-- **Binary Features (`Sex`):** Transformed via `LabelEncoder` (`male`: 1, `female`: 0).
-- **Nominal Multi-Category Features (`Embarked`, `Title`, `Deck`):** Encoded using Scikit-Learn `OneHotEncoder` with `handle_unknown='ignore'`.
+### Week 1: Data Preprocessing & Feature Engineering (Titanic)
+- **Dataset:** 891 raw passenger records across 12 features.
+- **Engineered Features:** Extracted titles (`Mr`, `Mrs`, `Miss`, `Master`), family dynamics (`FamilySize`, `IsAlone`), and reconstructed cabin deck categories.
+- **Data Quality:** 0 remaining missing values, 0 data leakage across train/test splits.
 
-### 4. Feature Scaling & Zero Data Leakage
-- `StandardScaler` is applied to numerical features (`Age`, `Fare`, `FamilySize`).
-- **Data Leakage Prevention:** The scaler is fitted **STRICTLY** on training features (`X_train`) and only transforms test features (`X_test`).
+### Week 2: Supervised Regression & Classification
+
+#### 1. Mini Project 2 & Assignment 1: House Price Prediction (Regression)
+
+| Model | Test $R^2$ | Test Adj $R^2$ | Test MAE ($) | Test RMSE ($) | Test MAPE (%) |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Linear Regression (OLS)** | **0.6529** | **0.6054** | **$970,043** | **$1,324,507** | **21.04%** |
+| **Ridge Regression** | 0.6528 | 0.6053 | $969,858 | $1,324,703 | 21.03% |
+| **Random Forest Regressor** | 0.6019 | 0.5474 | $1,036,740 | $1,418,576 | 22.16% |
+| **Decision Tree Regressor** | 0.4654 | 0.3922 | $1,222,655 | $1,643,884 | 26.39% |
+
+#### 2. Assignment 2: Titanic Survival Classification
+
+| Model | Test Accuracy (%) | Precision | Recall | F1-Score | Specificity | ROC-AUC |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Logistic Regression** | **84.92%** | **0.8281** | **0.7681** | **0.7970** | **0.9000** | **0.8734** |
+| **Random Forest Classifier** | 82.12% | 0.7846 | 0.7391 | 0.7612 | 0.8727 | 0.8482 |
+| **Decision Tree Classifier** | 80.45% | 0.8036 | 0.6522 | 0.7200 | 0.9000 | 0.8333 |
 
 ---
 
-## 📊 Visualizations Generated
+## ⚡ Quick Start & Execution
 
-All plots are automatically generated and saved to `outputs/figures/` in high resolution (300 DPI):
-
-| Chart File | Description | Key Insight |
-| :--- | :--- | :--- |
-| [`age_distribution.png`](file:///c:/Users/GOKULNATH/Desktop/Online%20ML%20INTERN/outputs/figures/age_distribution.png) | Histogram + KDE of passenger age | Bimodal distribution peaking around young adults (20–30 years) with an infant spike. |
-| [`survival_distribution.png`](file:///c:/Users/GOKULNATH/Desktop/Online%20ML%20INTERN/outputs/figures/survival_distribution.png) | Overall survival counts | 549 passengers did not survive (61.6%), while 342 survived (38.4%). |
-| [`survival_by_gender.png`](file:///c:/Users/GOKULNATH/Desktop/Online%20ML%20INTERN/outputs/figures/survival_by_gender.png) | Survival breakdown by gender | Female survival rate (~74%) significantly surpassed male survival rate (~19%). |
-| [`survival_by_class.png`](file:///c:/Users/GOKULNATH/Desktop/Online%20ML%20INTERN/outputs/figures/survival_by_class.png) | Survival breakdown by class | 1st Class passengers had highest survival rate (>62%), while 3rd Class suffered highest mortality (>75%). |
-| [`correlation_heatmap.png`](file:///c:/Users/GOKULNATH/Desktop/Online%20ML%20INTERN/outputs/figures/correlation_heatmap.png) | Heatmap of numerical feature correlations | Strong correlation between `Pclass` & `Fare`, as well as `Fare` & `Survived`. |
-
----
-
-## 🚀 How to Run the Project
-
-### 1. Prerequisites
-Ensure Python 3.10+ is installed on your system.
-
-### 2. Set Up Virtual Environment
-
-#### Windows (PowerShell / Command Prompt)
+### 1. Environment Setup
 ```bash
+# Clone the repository
+git clone https://github.com/gokulnathchandrakumar/skill-nexus-online-ml-intern.git
+cd skill-nexus-online-ml-intern
+
+# Create and activate virtual environment
 python -m venv .venv
-.venv\Scripts\activate
-```
-
-#### Linux / macOS
-```bash
-python3 -m venv .venv
+# On Windows:
+.\.venv\Scripts\activate
+# On Linux/macOS:
 source .venv/bin/activate
-```
 
-### 3. Install Dependencies
-```bash
+# Install required dependencies
 pip install -r requirements.txt
 ```
 
-### 4. Execute Main Pipeline
-Run the main modular script to process data, generate figures, and export cleaned CSVs:
+### 2. Run Weekly Pipelines
 ```bash
-python main.py
+# Execute Week 1 pipeline (Data Cleaning, EDA, Feature Engineering)
+python week1/main.py
+
+# Execute Week 2 pipeline (Model Training, Evaluation, Metric Reports)
+python week2/main.py
 ```
 
-### 5. Run Automated Tests
-Execute Pytest suite to verify dataset loading, cleaning, feature creation, and scaling:
+### 3. Run Automated Tests
 ```bash
+# Run all 16 unit tests across week1 and week2
 pytest -v
 ```
 
-### 6. Run Jupyter Notebook
-Launch interactive walkthrough:
-```bash
-jupyter notebook notebooks/week1_titanic_analysis.ipynb
-```
+---
+
+## 👤 Author
+**Gokulnath Chandrakumar**  
+*Skill Nexus Online Machine Learning Intern*  
+GitHub: [@gokulnathchandrakumar](https://github.com/gokulnathchandrakumar)
 
 ---
 
-## 🧪 Automated Testing Verification
-
-The project includes 7 unit tests in `tests/test_preprocessing.py`:
-
-- [x] **Test 1 (`test_data_loading`):** Validates raw dataset loads 891 rows successfully.
-- [x] **Test 2 (`test_required_columns`):** Ensures all original columns are present.
-- [x] **Test 3 (`test_target_column`):** Verifies target binary format (`Survived` $\in \{0, 1\}$).
-- [x] **Test 4 (`test_missing_values_handled`):** Confirms zero NaNs remain after imputation.
-- [x] **Test 5 (`test_feature_engineering`):** Tests calculation logic for `FamilySize`, `IsAlone`, and `Title`.
-- [x] **Test 6 (`test_processed_data_dimensions`):** Verifies 80/20 train/test split shape (712 train, 179 test).
-- [x] **Test 7 (`test_feature_scaling_no_nans`):** Confirms zero data leakage and scaled bounds.
-
----
-
-## 📈 Key Learnings & Future Improvements
-
-### Key Learnings
-1. **Domain Imputation over Row Dropping:** Imputing missing values using grouped statistics (such as median age per title/class) preserves statistical power.
-2. **Preventing Data Leakage:** Preprocessing parameters (scaler mean/variance, encoder maps) must be fit exclusively on training data.
-3. **High-Signal Features:** Abstracting `Name` into `Title` and `Cabin` into `Cabin_Known`/`Deck` creates actionable features for downstream estimators.
-
-### Future Improvements
-- Implement automated outlier detection for `Fare`.
-- Experiment with hyperparameter-tuned classifiers (Logistic Regression, Random Forest, XGBoost) in Week 2.
-- Build an automated MLflow pipeline for model artifact tracking.
-
----
-
-## 📜 License
-This project is open-source and available under the [MIT License](LICENSE).
+## 📄 License
+This repository is licensed under the [MIT License](LICENSE).
