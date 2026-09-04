@@ -65,8 +65,15 @@ Reinforcement Learning involves an **Agent** interacting with a dynamic **Enviro
 
 ## 🏗️ Project Architecture & Directory Structure
 
-```text
-c:\Users\GOKULNATH\Desktop\Online ML INTERN\
+├── week2/                           # Week 2: Supervised Learning (Regression & Classification)
+│   ├── data/                        # Kaggle Housing & Titanic datasets
+│   ├── src/                         # Linear/Logistic Regression, Trees, Ensembles, Utils
+│   ├── notebooks/                   # Supervised Learning portfolio notebook
+│   ├── outputs/                     # High-DPI figures, models (.joblib), CSV reports
+│   ├── tests/                       # Pytest automated test suite (9 tests)
+│   ├── main.py                      # Week 2 CLI pipeline entrypoint
+│   └── README.md                    # Week 2 comprehensive documentation
+│
 ├── data/
 │   ├── raw/
 │   │   └── train.csv                # Raw Titanic training dataset (891 rows, 12 columns)
